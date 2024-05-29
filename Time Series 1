@@ -1,0 +1,52 @@
+import datetime
+res=datetime.datetime.now()
+print("Today-now function",res)
+OUTPUT:
+Today-now function 2024-04-26 06:28:22.436724
+
+today=datetime.datetime.today()
+print("\ntoday:",today)
+OUTPUT:
+today: 2024-04-26 06:32:08.852738
+
+tomorrow=today + datetime.timedelta(days=1)
+print("\ntomorrow:",tomorrow)
+OUTPUT:
+tomorrow: 2024-04-27 06:32:08.852738
+
+yesterday=today-datetime.timedelta(days=1)
+print("\nyesterday:",yesterday)
+OUTPUT:
+yesterday: 2024-04-25 06:32:08.852738
+
+res=datetime.datetime.now()
+res1=datetime.datetime(2020,6,8,23,10,25,404040)
+print("\ndateformat[2020,6,8,23,10,25,404040]",res1)
+OUTPUT:
+dateformat[2020,6,8,23,10,25,404040] 2020-06-08 23:10:25.404040
+
+from datetime import date
+d=date(2002,12,31)
+print("\nReplacing date:",d,d.replace(day=26))
+OUTPUT:
+Replacing date: 2002-12-31 2002-12-26
+
+t=date(2022,10,13)
+d=date(2022,10,13).ctime()
+print("\nDay and month:",t,d)
+OUTPUT:
+Day and month: 2022-10-13 Thu Oct 13 00:00:00 2022
+
+today=date.today()
+print("\nToday:",today)
+print("\nCurrent year:",today.year)
+print("\nCurrent month:",today.month)
+print("\nCurrent day:",today.day)
+OUTPUT:
+Today: 2024-04-26
+
+Current year: 2024
+
+Current month: 4
+
+Current day: 26
