@@ -1,0 +1,95 @@
+import datetime
+cd=datetime.datetime.now()
+print(cd)
+OUTPUT:
+2024-04-26 19:53:56.084860
+
+res=cd.strftime("%y")
+print("\nTwo-digit year:",res)
+OUTPUT:
+Two-digit year: 24
+
+res1=cd.strftime("%Y")
+print("\nFour-digit year:",res1)
+OUTPUT:
+Four-digit year: 2024
+
+res=cd.strftime("%m")
+print("\nTwo-digit month[01,12]:",res)
+OUTPUT:
+Two-digit month[01,12]: 04
+
+res=cd.strftime("%b")
+print("Short version month:",res)
+OUTPUT:
+Short version month: Apr
+
+res=cd.strftime("%B")
+print("Full name of month:",res)
+OUTPUT:
+Full name of month: April
+
+res=cd.strftime("%j")
+print("Days of the year:",res)
+OUTPUT:
+Days of the year: 117
+
+res=cd.strftime("%D")
+print("Shortcut for %m/%d/%y",res)
+OUTPUT:
+Shortcut for %m/%d/%y 04/26/24
+
+res=cd.strftime("%d")
+print("Two-digit day[01,31]",res)
+OUTPUT:
+Two-digit day[01,31] 26
+
+res=cd.strftime("%a")
+print("Short version of day:",res)
+OUTPUT:
+Short version of day: Wed
+
+res=cd.strftime("%A")
+print("Full name of day:",res)
+OUTPUT:
+Full name of day: Friday
+
+res=cd.strftime("%H")
+print("Hour(24-Hour clock):",res)
+OUTPUT:
+Hour(24-Hour clock): 19
+
+res=cd.strftime("%I")
+print("Hour(12-hour clock):",res)
+OUTPUT:
+Hour(12-hour clock): 07
+
+res=cd.strftime("%m")
+print("Two-digit minute:",res)
+OUTPUT:
+Two-digit minute: 04
+
+res=cd.strftime("%s")
+print("Seconds:",res)
+OUTPUT:
+Seconds: 1714161236
+
+res=cd.strftime("%F")
+print("Shortcut for %Y-%M-%d",res)
+OUTPUT:
+Shortcut for %Y-%M-%d 2024-04-26
+
+res=cd.strftime("%f")
+print("Microsecond as an integer,zero-padded:",res)
+OUTPUT:
+Microsecond as an integer,zero-padded: 084860
+
+res=cd.strftime("%x")
+print("Local appropriate formatted data:",res)
+OUTPUT:
+Local appropriate formatted data: 04/26/24
+
+res=cd.strftime("%X")
+print("Local appropriate time:",res)
+OUTPUT:
+Local appropriate time: 19:53:56
