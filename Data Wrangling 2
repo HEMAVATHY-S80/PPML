@@ -1,0 +1,96 @@
+import pandas as pd
+#Assign Data
+data=({'Name':['Jai','Princi','Gaurav','Anuj','Ravi','Natasha','Riya'],'Age':[17,17,18,17,18,17,17],'Gender':['M','F','M','M','M','F','F'],'Marks':[90,76,'NaN',74,65,'NaN',71]})
+#convert into DataFrame
+df=pd.DataFrame(data)
+#Display data
+print("Original DataFrame:\n",df)
+OUTPUT:
+Original DataFrame:
+       Name  Age Gender Marks
+0      Jai   17      M    90
+1   Princi   17      F    76
+2   Gaurav   18      M   NaN
+3     Anuj   17      M    74
+4     Ravi   18      M    65
+5  Natasha   17      F   NaN
+6     Riya   17      F    71
+
+#compute average
+c=avg=0
+for ele in df['Marks']:
+  if str(ele).isnumeric():
+    c+=1
+    avg+=ele
+avg/=c
+print(avg)
+OUTPUT:
+75.2
+
+#Replace missing values
+df=df.replace(to_replace='NaN',value=avg)
+#Display Data
+print("\n Replacing NaN with Average marks:\n",df)
+OUTPUT:
+Replacing NaN with Average marks:
+       Name  Age Gender  Marks
+0      Jai   17      M   90.0
+1   Princi   17      F   76.0
+2   Gaurav   18      M   75.2
+3     Anuj   17      M   74.0
+4     Ravi   18      M   65.0
+5  Natasha   17      F   75.2
+6     Riya   17      F   71.0
+
+#Filter top scoring students
+df=df[df['Marks']>=75]
+#Remove age row
+df=df.drop(['Age'],axis=1)
+#Display Data
+print("\n Filtering and Dropping Functions:\n",df)
+OUTPUT:
+Filtering and Dropping Functions:
+       Name Gender  Marks
+0      Jai      M   90.0
+1   Princi      F   76.0
+2   Gaurav      M   75.2
+5  Natasha      F   75.2
+
+#concatenating two DataFrames
+one=pd.DataFrame({"Name":['Alex','Amy','Allen','Alice','Ayoung'],"Subject_id":['Sub1','Sub2','Sub4',
+'Sub6','Sub5'],'Marks_scored':[98,90,87,69,78]},index=[1,2,3,4,5])
+print("\nOriginal DataFrame_1:\n",one)
+OUTPUT:
+Original DataFrame_1:
+      Name Subject_id  Marks_scored
+1    Alex       Sub1            98
+2     Amy       Sub2            90
+3   Allen       Sub4            87
+4   Alice       Sub6            69
+5  Ayoung       Sub5            78
+
+two=pd.DataFrame({"Name":['Billy','Brian','Bran','Bryce','Betty'],"Subject_id":['Sub2','Sub4','Sub3','Sub6','Sub5'],'Marks_scored':[89,80,79,97,88]},index=[1,2,3,4,5])
+print("\nOriginal DataFrame_2:\n",two)
+OUTPUT:
+Original DataFrame_2:
+     Name Subject_id  Marks_scored
+1  Billy       Sub2            89
+2  Brian       Sub4            80
+3   Bran       Sub3            79
+4  Bryce       Sub6            97
+5  Betty       Sub5            88
+
+print("\n Concatenated DataFrame using concat function:\n", pd.concat([one, two]))
+OUTPUT:
+Concatenated DataFrame using concat function:
+      Name Subject_id  Marks_scored
+1    Alex       Sub1            98
+2     Amy       Sub2            90
+3   Allen       Sub4            87
+4   Alice       Sub6            69
+5  Ayoung       Sub5            78
+1   Billy       Sub2            89
+2   Brian       Sub4            80
+3    Bran       Sub3            79
+4   Bryce       Sub6            97
+5   Betty       Sub5            88
