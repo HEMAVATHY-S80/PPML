@@ -1,0 +1,121 @@
+import pandas as pd
+car_selling_data=({'Brand':['Maruti','Maruti','Maruti','Maruti','Hyundai','Hyundai','Toyota','Mahindra','Mahindra','Ford','Toyota','Ford'],'Year':[2010,2011,2009,2013,2010,2011,2011,2010,2013,2010,2010,
+2011],'Sold':[6,7,9,8,3,5,2,8,7,2,4,2]})
+#Creating DataFrame for provided Data
+df=pd.DataFrame(car_selling_data)
+print("\n Original DataFrame:\n",df)
+OUTPUT:
+Original DataFrame:
+        Brand  Year  Sold
+0     Maruti  2010     6
+1     Maruti  2011     7
+2     Maruti  2009     9
+3     Maruti  2013     8
+4    Hyundai  2010     3
+5    Hyundai  2011     5
+6     Toyota  2011     2
+7   Mahindra  2010     8
+8   Mahindra  2013     7
+9       Ford  2010     2
+10    Toyota  2010     4
+11      Ford  2011     2
+
+#Group the data when year=2010
+grouped=df.groupby('Year')
+print("\n Group by year 2010:\n",grouped.get_group(2010))
+OUTPUT:
+Group by year 2010:
+        Brand  Year  Sold
+0     Maruti  2010     6
+4    Hyundai  2010     3
+7   Mahindra  2010     8
+9       Ford  2010     2
+10    Toyota  2010     4
+
+#initialising Data
+student_data=({'Name':['Amit','Praveen','Jagadeesh','Rahul','Vishal','Suresh','Rishab','Sathish','Amit','Rahul','Prvaveen','Amit'],'Roll_no':[23,54,29,36,59,38,12,45,34,36,54,23],'Email':['xxxx@gmail.com','xxxxxx@gmail.com','xxxxxx@gmail.com','xx@gmail.com','xxxxx@gmail.com','xxxxx@gmail.com','xxxxx@gmail.com','xxxxx@gmail.com','xxxxx@gmail.com','xxxxxx@gmail.com','xxxxxxxxxx@gmail.com','xxxxxxxxxx@gmail.com']})
+#creating DataFrame
+df=pd.DataFrame(student_data)
+print("\n Original DataFrame:\n",df)
+OUTPUT:
+ Original DataFrame:
+          Name  Roll_no                 Email
+0        Amit       23        xxxx@gmail.com
+1     Praveen       54      xxxxxx@gmail.com
+2   Jagadeesh       29      xxxxxx@gmail.com
+3       Rahul       36          xx@gmail.com
+4      Vishal       59       xxxxx@gmail.com
+5      Suresh       38       xxxxx@gmail.com
+6      Rishab       12       xxxxx@gmail.com
+7     Sathish       45       xxxxx@gmail.com
+8        Amit       34       xxxxx@gmail.com
+9       Rahul       36      xxxxxx@gmail.com
+10   Prvaveen       54  xxxxxxxxxx@gmail.com
+11       Amit       23  xxxxxxxxxx@gmail.com
+
+#Here df.dupliacted() lists duplicate Entries in RollNo So that ~(NOT) is placed in order to get nondupliacte values
+non_duplicate=df[~df.duplicated('Roll_no')]
+#printing non_duplicate values
+print("\n Removed duplicted rows:\n",non_duplicate)
+OUTPUT:
+Removed duplicted rows:
+         Name  Roll_no             Email
+0       Amit       23    xxxx@gmail.com
+1    Praveen       54  xxxxxx@gmail.com
+2  Jagadeesh       29  xxxxxx@gmail.com
+3      Rahul       36      xx@gmail.com
+4     Vishal       59   xxxxx@gmail.com
+5     Suresh       38   xxxxx@gmail.com
+6     Rishab       12   xxxxx@gmail.com
+7    Sathish       45   xxxxx@gmail.com
+8       Amit       34   xxxxx@gmail.com
+
+#creating DataFrame
+details=pd.DataFrame({'ID':[101,102,103,104,105,106,107,108,109,110],'NAME':['Arun','Praveen','Harish','Pooja','Rahul','Naresh','Saurabh','Anush','Dinesh','Rohit'],'BRANCH':['Mech','Mech','CSE','CSE','CSE','EEE','EEE','ECE','ECE','IT']})
+print("\n Original DataFrame_1:\n",details)
+OUTPUT:
+Original DataFrame_1:
+     ID     NAME BRANCH
+0  101     Arun   Mech
+1  102  Praveen   Mech
+2  103   Harish    CSE
+3  104    Pooja    CSE
+4  105    Rahul    CSE
+5  106   Naresh    EEE
+6  107  Saurabh    EEE
+7  108    Anush    ECE
+8  109   Dinesh    ECE
+9  110    Rohit     IT
+
+#Creating DataFrame
+fees_status=pd.DataFrame({'ID':[101,102,103,104,105,106,107,108,109,110],'PENDING':[50000,250,'NIL',9000,15000,'NIL',4500,1800,250,'NIL']})
+print('\n Original DataFrame_2:\n',fees_status)
+OUTPUT:
+Original DataFrame_2:
+     ID PENDING
+0  101   50000
+1  102     250
+2  103     NIL
+3  104    9000
+4  105   15000
+5  106     NIL
+6  107    4500
+7  108    1800
+8  109     250
+9  110     NIL
+
+#Merging DataFrame
+print("\n Merged DataFrame:\n",pd.merge(details,fees_status,on='ID'))
+OUTPUT:
+Merged DataFrame:
+     ID     NAME BRANCH PENDING
+0  101     Arun   Mech   50000
+1  102  Praveen   Mech     250
+2  103   Harish    CSE     NIL
+3  104    Pooja    CSE    9000
+4  105    Rahul    CSE   15000
+5  106   Naresh    EEE     NIL
+6  107  Saurabh    EEE    4500
+7  108    Anush    ECE    1800
+8  109   Dinesh    ECE     250
+9  110    Rohit     IT     NIL
