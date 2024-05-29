@@ -1,0 +1,47 @@
+import pandas as pd
+df=pd.DataFrame([[11,21,31],[1,22,33],[315,32,33]],index=['one','two','three'],columns=['a','b','c'])
+df1=pd.DataFrame([[110,210,310],[12,220,330],[310,320,330]],index=['four','five','six'],columns=['a','b','c'])
+print(df)
+OUTPUT:
+a   b   c
+one     11  21  31
+two      1  22  33
+three  315  32  33
+
+print("Taking the input from the dataframe and storing in the excel file\n")
+df.to_excel('/content/Sample1.xlsx')
+df1.to_excel('/content/Sample2.xlsx')
+OUTPUT:
+Taking the input from the dataframe and storing in the excel file
+
+x=pd.read_excel("/content/Sample1.xlsx")
+y=pd.read_excel("/content/Sample2.xlsx")
+z=pd.concat([x,y])
+z.to_excel('/content/Sample3.xlsx')
+df=z.sort_values(["a"])
+print(df)
+df.to_excel('/content/Sample4.xlsx')
+OUTPUT:
+Unnamed: 0    a    b    c
+1        two    1   22   33
+0        one   11   21   31
+1       five   12  220  330
+0       four  110  210  310
+2        six  310  320  330
+2      three  315   32   33
+
+df=pd.read_excel("/Sample.xlsx")
+print(df)
+print(list(df))
+print(format(len(df)))
+OUTPUT:
+ S.No   Name  English  Tamil  Maths  Science  Social  Total  Average
+0     1    Abi       60     71     55       50      50    286     57.2
+1     2  Divya       70     80     60       68      62    340     68.0
+2     3    Ega       60     80     56       55      68    319     63.8
+3     4  Iniya       90     90     85       80      78    423     84.6
+4     5   Jeni       87     83     70       78      79    397     79.4
+5     6  Lekha       85     93     68       71      69    386     77.2
+['S.No', 'Name', 'English', 'Tamil', 'Maths', 'Science', 'Social', 'Total', 'Average']
+6
+
