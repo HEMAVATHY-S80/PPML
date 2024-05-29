@@ -1,0 +1,110 @@
+import pandas as pd
+data1=({"Name":["Sally","Mary","John"],"Age":[50,40,30]})
+data2=({"qualified":[True,False,False]})
+df1=pd.DataFrame(data1)
+df2=pd.DataFrame(data2)
+print("\nOriginal dataframe1:\n",df1)
+print("\nOriginal dataframe2\n",df2)
+OUTPUT:
+Original dataframe1:
+     Name  Age
+0  Sally   50
+1   Mary   40
+2   John   30
+
+Original dataframe2
+    qualified
+0       True
+1      False
+2      False
+
+newdf=df1.join(df2)
+print("\nJoining 2 dataframes using join function:\n",newdf)
+OUTPUT:
+Joining 2 dataframes using join function:
+     Name  Age  qualified
+0  Sally   50       True
+1   Mary   40      False
+2   John   30      False
+
+df1=pd.DataFrame([[1,2],[3,4]])
+df2=pd.DataFrame([[5,6],[7,8]])
+def myfunc(a,b):
+  if(a.sum()>b.sum()):
+    return a
+  else:
+    return b
+print("\nOriginal Dataframe1:\n",df1)
+print("\nOriginal Dataframe2:\n",df2)
+print("\nCombining the 2 dataframes using combine function using some condition:\n",df1.combine(df2,myfunc))
+OUTPUT:
+Original Dataframe1:
+    0  1
+0  1  2
+1  3  4
+
+Original Dataframe2:
+    0  1
+0  5  6
+1  7  8
+
+Combining the 2 dataframes using combine function using some condition:
+    0  1
+0  5  6
+1  7  8
+
+data1=({"Name":["Sally","Mary","John"],"Age":[50,40,30]})
+data2=({"Name":["Sally","Peter","Mickey"],"Age":[77,44,22]})
+df1=pd.DataFrame(data1)
+df2=pd.DataFrame(data2)
+print("\nOriginal dataframe1:\n",df1)
+print("\nOriginal dataframe2\n",df2)
+newdf=df1.merge(df2,how='right')
+print("\nMerge operation:\n",newdf)
+OUTPUT:
+Original dataframe1:
+     Name  Age
+0  Sally   50
+1   Mary   40
+2   John   30
+
+Original dataframe2
+      Name  Age
+0   Sally   77
+1   Peter   44
+2  Mickey   22
+
+Merge operation:
+      Name  Age
+0   Sally   77
+1   Peter   44
+2  Mickey   22
+
+import pandas as pd
+df=pd.DataFrame({"team":['A','B','C','D'],"points":[88,91,99,94],"assists":[12,17,24,28],"rebounds":[22,28,30,31]})
+print("\nOriginal Dataframe:\n",df)
+df=pd.melt(df,id_vars='team',value_vars=['points','assists','rebounds'])
+print("\n Reshaped DataFrame:\n",df)
+OUTPUT:
+Original Dataframe:
+   team  points  assists  rebounds
+0    A      88       12        22
+1    B      91       17        28
+2    C      99       24        30
+3    D      94       28        31
+
+ Reshaped DataFrame:
+    team  variable  value
+0     A    points     88
+1     B    points     91
+2     C    points     99
+3     D    points     94
+4     A   assists     12
+5     B   assists     17
+6     C   assists     24
+7     D   assists     28
+8     A  rebounds     22
+9     B  rebounds     28
+10    C  rebounds     30
+11    D  rebounds     31
+
