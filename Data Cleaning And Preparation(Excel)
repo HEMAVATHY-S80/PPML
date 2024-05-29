@@ -1,0 +1,140 @@
+#Creating new DataFrame
+import pandas as pd
+pd.set_option('display.max_columns',10)
+print("Original data set from Excel file:\n")
+df=pd.read_excel("/Sample.xlsx")
+print(df)
+OUTPUT:
+Original data set from Excel file:
+
+   S.No   Name  English  Tamil  Maths  Science  Social  Total  Average
+0     1    Abi       60     71     55       50      50    286     57.2
+1     2  Divya       70     80     60       68      62    340     68.0
+2     3    Ega       60     80     56       55      68    319     63.8
+3     4  Iniya       90     90     85       80      78    423     84.6
+4     5   Jeni       87     83     70       78      79    397     79.4
+5     6  Lekha       85     93     68       71      69    386     77.2
+
+#Removing extra white spaces using strip() function
+f=df['Name'].str.strip()
+f.to_excel("C:data_clean_1.xlsx")
+#Replacing NaN with forward values
+print("Replace value with Forward:\n")
+k=df.fillna(method='pad')
+print(k)
+OUTPUT:
+Replace value with Forward:
+
+   S.No   Name  English  Tamil  Maths  Science  Social  Total  Average
+0     1    Abi       60     71     55       50      50    286     57.2
+1     2  Divya       70     80     60       68      62    340     68.0
+2     3    Ega       60     80     56       55      68    319     63.8
+3     4  Iniya       90     90     85       80      78    423     84.6
+4     5   Jeni       87     83     70       78      79    397     79.4
+5     6  Lekha       85     93     68       71      69    386     77.2
+
+print("The above updated dataset will be stored in data_clean_3.xlsx file \n")
+k.to_excel("C:data_clean_2.xlsx")
+OUTPUT:
+The above updated dataset will be stored in data_clean_3.xlsx file 
+
+print("\n Drop one particular column and it's values:\n")
+k.drop(['Total'],axis=1,inplace=True)
+print(k)
+OUTPUT:
+Drop one particular column and it's values:
+
+   S.No   Name  English  Tamil  Maths  Science  Social  Average
+0     1    Abi       60     71     55       50      50     57.2
+1     2  Divya       70     80     60       68      62     68.0
+2     3    Ega       60     80     56       55      68     63.8
+3     4  Iniya       90     90     85       80      78     84.6
+4     5   Jeni       87     83     70       78      79     79.4
+5     6  Lekha       85     93     68       71      69     77.2
+
+print("The above updated dataset will be stored in data_clean_3.xlsx file \n")
+k.to_excel("C:data_clean_3.xlsx")
+OUTPUT:
+The above updated dataset will be stored in data_clean_3.xlsx file
+
+df=pd.read_excel("/Sample.xlsx")
+print("original dataset:\n",df)
+OUTPUT:
+original dataset:
+    S.No   Name  English  Tamil  Maths  Science  Social  Total  Average
+0     1    Abi       60     71     55       50      50    286     57.2
+1     2  Divya       70     80     60       68      62    340     68.0
+2     3    Ega       60     80     56       55      68    319     63.8
+3     4  Iniya       90     90     85       80      78    423     84.6
+4     5   Jeni       87     83     70       78      79    397     79.4
+5     6  Lekha       85     93     68       71      69    386     77.2
+
+x=df.dropna()
+print("Drop NaN rows")
+print("Dropped dataset:\n",x)
+OUTPUT:
+Drop NaN rows
+Dropped dataset:
+    S.No   Name  English  Tamil  Maths  Science  Social  Total  Average
+0     1    Abi       60     71     55       50      50    286     57.2
+1     2  Divya       70     80     60       68      62    340     68.0
+2     3    Ega       60     80     56       55      68    319     63.8
+3     4  Iniya       90     90     85       80      78    423     84.6
+4     5   Jeni       87     83     70       78      79    397     79.4
+5     6  Lekha       85     93     68       71      69    386     77.2
+
+print("The above updated dataset will be stored in data_clean_4.xlsx file\n")
+x.to_excel("C:data_clean_4.xlsx")
+OUTPUT:
+The above updated dataset will be stored in data_clean_4.xlsx file
+
+n=pd.read_excel("/Sample.xlsx")
+print("Original DataSet:")
+print(n)
+OUTPUT:
+Original DataSet:
+   S.No   Name  English  Tamil  Maths  Science  Social  Total  Average
+0     1    Abi       60     71     55       50      50    286     57.2
+1     2  Divya       70     80     60       68      62    340     68.0
+2     3    Ega       60     80     56       55      68    319     63.8
+3     4  Iniya       90     90     85       80      78    423     84.6
+4     5   Jeni       87     83     70       78      79    397     79.4
+5     6  Lekha       85     93     68       71      69    386     77.2
+
+#Replacing the value 80 as 90
+print("Replace values:\n")
+y=n.replace({80:90})
+print("\n Updated dataset with replaced values:(80:90)\n")
+print(y)
+OUTPUT:
+Replace values:
+
+
+ Updated dataset with replaced values:(80:90)
+
+   S.No   Name  English  Tamil  Maths  Science  Social  Total  Average
+0     1    Abi       60     71     55       50      50    286     57.2
+1     2  Divya       70     90     60       68      62    340     68.0
+2     3    Ega       60     90     56       55      68    319     63.8
+3     4  Iniya       90     90     85       90      78    423     84.6
+4     5   Jeni       87     83     70       78      79    397     79.4
+5     6  Lekha       85     93     68       71      69    386     77.2
+
+print("\n The above updated dataset will be stored in data_clean_5.xlsx file\n")
+y.to_excel("C:data_clean_5.xlsx")
+OUTPUT:
+The above updated dataset will be stored in data_clean_5.xlsx file
+
+print("Original dataset from excel file:\n")
+df=pd.read_excel("/Sample.xlsx")
+print(df)
+OUTPUT:
+Original dataset from excel file:
+
+   S.No   Name  English  Tamil  Maths  Science  Social  Total  Average
+0     1    Abi       60     71     55       50      50    286     57.2
+1     2  Divya       70     80     60       68      62    340     68.0
+2     3    Ega       60     80     56       55      68    319     63.8
+3     4  Iniya       90     90     85       80      78    423     84.6
+4     5   Jeni       87     83     70       78      79    397     79.4
+5     6  Lekha       85     93     68       71      69    386     77.2
