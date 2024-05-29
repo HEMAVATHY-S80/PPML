@@ -1,0 +1,47 @@
+ran=pd.date_range("2020-08-15","2020-09-01")
+print("Date range:\n",ran)
+OUTPUT:
+Date range:
+ DatetimeIndex(['2020-08-15', '2020-08-16', '2020-08-17', '2020-08-18',
+               '2020-08-19', '2020-08-20', '2020-08-21', '2020-08-22',
+               '2020-08-23', '2020-08-24', '2020-08-25', '2020-08-26',
+               '2020-08-27', '2020-08-28', '2020-08-29', '2020-08-30',
+               '2020-08-31', '2020-09-01'],
+              dtype='datetime64[ns]', freq='D')
+
+ran=pd.date_range("2020-07-15",periods=10)
+print("Date range with periods and default day frequency:\n",ran)
+OUTPUT:
+Date range with periods and default day frequency:
+ DatetimeIndex(['2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18',
+               '2020-07-19', '2020-07-20', '2020-07-21', '2020-07-22',
+               '2020-07-23', '2020-07-24'],
+              dtype='datetime64[ns]', freq='D')
+
+ran=pd.date_range("2020-07-15",periods=10,freq="H")
+print("Date range with periods and hour frequency:\n",ran)
+OUTPUT:
+Date range with periods and hour frequency:
+ DatetimeIndex(['2020-07-15 00:00:00', '2020-07-15 01:00:00',
+               '2020-07-15 02:00:00', '2020-07-15 03:00:00',
+               '2020-07-15 04:00:00', '2020-07-15 05:00:00',
+               '2020-07-15 06:00:00', '2020-07-15 07:00:00',
+               '2020-07-15 08:00:00', '2020-07-15 09:00:00'],
+              dtype='datetime64[ns]', freq='H')
+
+ran=pd.date_range("2020-07-15",periods=10,freq="M")
+print("Date range with periods and month frequency:\n",ran)
+OUTPUT:
+Date range with periods and month frequency:
+ DatetimeIndex(['2020-07-31', '2020-08-31', '2020-09-30', '2020-10-31',
+               '2020-11-30', '2020-12-31', '2021-01-31', '2021-02-28',
+               '2021-03-31', '2021-04-30'],
+              dtype='datetime64[ns]', freq='M')
+
+ran=pd.timedelta_range(0,periods=8,freq="H")
+print("Zero day with hour frequency periods:",ran)
+OUTPUT:
+Zero day with hour frequency periods: TimedeltaIndex(['0 days 00:00:00', '0 days 01:00:00', '0 days 02:00:00',
+                '0 days 03:00:00', '0 days 04:00:00', '0 days 05:00:00',
+                '0 days 06:00:00', '0 days 07:00:00'],
+               dtype='timedelta64[ns]', freq='H')
