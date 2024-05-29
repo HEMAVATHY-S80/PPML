@@ -1,0 +1,113 @@
+import pandas as pd
+df = pd.DataFrame({'Animal': ['Falcon', 'Falcon',
+'Parrot', 'Parrot'],
+'Max Speed': [380., 370., 24., 26.]})
+print(df)
+#Group by through Column using mean
+a=df.groupby(['Animal']).mean()
+print("\nOriginal DataFrame\n",df)
+print("\nGroup by through Column using mean\n",a)
+OUTPUT:
+Animal  Max Speed
+0  Falcon      380.0
+1  Falcon      370.0
+2  Parrot       24.0
+3  Parrot       26.0
+
+Original DataFrame
+    Animal  Max Speed
+0  Falcon      380.0
+1  Falcon      370.0
+2  Parrot       24.0
+3  Parrot       26.0
+
+Group by through Column using mean
+         Max Speed
+Animal           
+Falcon      375.0
+Parrot       25.0
+
+b=df.groupby(['Animal']).sum()
+print("\nOriginal DataFrame\n",df)
+print("\nGroup by through Column using sum\n",b)
+OUTPUT:
+Original DataFrame
+    Animal  Max Speed
+0  Falcon      380.0
+1  Falcon      370.0
+2  Parrot       24.0
+3  Parrot       26.0
+
+Group by through Column using sum
+         Max Speed
+Animal           
+Falcon      750.0
+Parrot       50.0
+
+c=df.groupby(['Animal']).count()
+print("\nOriginal DataFrame\n",df)
+print("\nGroup by through Column using count\n",c)
+OUTPUT:
+Original DataFrame
+    Animal  Max Speed
+0  Falcon      380.0
+1  Falcon      370.0
+2  Parrot       24.0
+3  Parrot       26.0
+
+Group by through Column using count
+         Max Speed
+Animal           
+Falcon          2
+Parrot          2
+
+d=df.groupby(['Animal']).first()
+print("\nOriginal DataFrame\n",df)
+print("\nGroup by through Column using first\n",d)
+OUTPUT:
+Original DataFrame
+    Animal  Max Speed
+0  Falcon      380.0
+1  Falcon      370.0
+2  Parrot       24.0
+3  Parrot       26.0
+
+Group by through Column using first
+         Max Speed
+Animal           
+Falcon      380.0
+Parrot       24.0
+
+e=df.groupby(['Animal']).last()
+print("\nOriginal DataFrame\n",df)
+print("\nGroup by through Column using last\n",e)
+OUTPUT:
+Original DataFrame
+    Animal  Max Speed
+0  Falcon      380.0
+1  Falcon      370.0
+2  Parrot       24.0
+3  Parrot       26.0
+
+Group by through Column using last
+         Max Speed
+Animal           
+Falcon      370.0
+Parrot       26.0
+
+f=df.groupby(['Animal']).size()
+print("\nOriginal DataFrame\n",df)
+print("\nGroup by through Column using size\n",f)
+OUTPUT:
+Original DataFrame
+    Animal  Max Speed
+0  Falcon      380.0
+1  Falcon      370.0
+2  Parrot       24.0
+3  Parrot       26.0
+
+Group by through Column using size
+ Animal
+Falcon    2
+Parrot    2
+dtype: int64
