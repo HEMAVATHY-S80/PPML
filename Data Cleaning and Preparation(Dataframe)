@@ -1,0 +1,158 @@
+#import the pandas library
+import pandas as pd
+import numpy as np
+#creating DataFrame
+df=pd.DataFrame(np.random.randn(5,3),index=['a','c','e','f','h'],columns=['one','two','three'])
+df=df.reindex(['a','b','c','d','e','f','g','h'])
+print("Original DataFrame with NaN\n",df)
+OUTPUT:
+Original DataFrame with NaN
+         one       two     three
+a -1.343208 -0.140977  1.619645
+b       NaN       NaN       NaN
+c  1.494452 -1.275273 -0.458373
+d       NaN       NaN       NaN
+e -0.011208  0.506407  0.883825
+f  0.880326  0.298014 -0.839227
+g       NaN       NaN       NaN
+h -0.647688  1.031038 -1.253180
+
+#Drop NaN rows
+print("Dropped Data Frame\n",df.dropna())
+print("\n")
+OUTPUT:
+Dropped Data Frame
+         one       two     three
+a -1.343208 -0.140977  1.619645
+c  1.494452 -1.275273 -0.458373
+e -0.011208  0.506407  0.883825
+f  0.880326  0.298014 -0.839227
+h -0.647688  1.031038 -1.253180
+
+df=pd.DataFrame(np.random.randn(3,3),index=['a','c','e'],columns=['one','two','three'])
+df=df.reindex(['a','b','c'])
+print("original DataFrame:\n",df)
+print("\n")
+OUTPUT:
+original DataFrame:
+         one       two     three
+a -0.446631 -0.450514 -0.341411
+b       NaN       NaN       NaN
+c  0.777532 -1.133064  1.079369
+
+#replacing NaN rows with zeros
+print("NaN replaced with '0':\n")
+print(df.fillna(0))
+OUTPUT:
+NaN replaced with '0':
+
+        one       two     three
+a -0.446631 -0.450514 -0.341411
+b  0.000000  0.000000  0.000000
+c  0.777532 -1.133064  1.079369
+
+#Creating DataFrame
+df=pd.DataFrame({'one':[10,20,30,40,50,2000],'two':[1000,0,30,40,50,60]})
+print("\n Original DataFrame:\n",df)
+OUTPUT:
+Original DataFrame:
+     one   two
+0    10  1000
+1    20     0
+2    30    30
+3    40    40
+4    50    50
+5  2000    60
+
+#Replacing some values
+print("\n DataFrame with replaced values:\n")
+print(df.replace({1000:10,2000:60,40:400,0:100}))
+OUTPUT:
+DataFrame with replaced values:
+
+   one  two
+0   10   10
+1   20  100
+2   30   30
+3  400  400
+4   50   50
+5   60   60
+
+#Creating new DataFrame
+df=pd.DataFrame(np.random.randn(5,3),index=['a','c','e','f','h'],columns=['one','two','three'])
+df=df.reindex(['a','b','c','d','e','f','g','h'])
+print("Original DataFrame:\n",df)
+OUTPUT:
+Original DataFrame:
+         one       two     three
+a -0.734272  0.780895  0.595204
+b       NaN       NaN       NaN
+c -1.128319  1.062873  0.111318
+d       NaN       NaN       NaN
+e  1.435882  0.448655 -0.415346
+f -1.098293  0.211430  0.199013
+g       NaN       NaN       NaN
+h  0.243500 -1.508365  0.227688
+
+print("\n NaN-with True fill:\n")
+print(df['one'].isnull())
+OUTPUT:
+NaN-with True fill:
+
+a    False
+b     True
+c    False
+d     True
+e    False
+f    False
+g     True
+h    False
+Name: one, dtype: bool
+
+#Creating new DataFrame
+df=pd.DataFrame(np.random.randn(5,3),index=['a','c','e','f','h'],columns=['one','two','three'])
+df=df.reindex(['a','b','c','d','e','f','g','h'])
+print("\n Original DataFrame:\n",df)
+OUTPUT:
+Original DataFrame:
+         one       two     three
+a  1.741389 -1.662830 -0.272336
+b       NaN       NaN       NaN
+c  0.171259 -0.385818 -0.118444
+d       NaN       NaN       NaN
+e -1.116260 -0.190469 -0.155555
+f -1.067948  2.227951 -2.170060
+g       NaN       NaN       NaN
+h  0.005728  0.693302 -1.866682
+
+#Replacing NaN rows with forward values
+print("\n NaN-Filled with Forward values:\n")
+print(df.fillna(method='pad'))
+OUTPUT:
+NaN-Filled with Forward values:
+
+        one       two     three
+a  1.741389 -1.662830 -0.272336
+b  1.741389 -1.662830 -0.272336
+c  0.171259 -0.385818 -0.118444
+d  0.171259 -0.385818 -0.118444
+e -1.116260 -0.190469 -0.155555
+f -1.067948  2.227951 -2.170060
+g -1.067948  2.227951 -2.170060
+h  0.005728  0.693302 -1.866682
+
+#Replacing NaN rows with Backward values
+print("NaN-Filled with Background values:\n")
+print(df.fillna(method='bfill'))
+OUTPUT:
+NaN-Filled with Background values:
+
+        one       two     three
+a  1.741389 -1.662830 -0.272336
+b  0.171259 -0.385818 -0.118444
+c  0.171259 -0.385818 -0.118444
+d -1.116260 -0.190469 -0.155555
+e -1.116260 -0.190469 -0.155555
+f -1.067948  2.227951 -2.170060
+g  0.005728  0.693302 -1.866682
+h  0.005728  0.693302 -1.866682
